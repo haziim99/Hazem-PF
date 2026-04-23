@@ -14,7 +14,7 @@
 <style>
 :root {
   --bg: #060612;
-  --surface: #0d0d1f;
+  --surface: #0d0d1f; 
   --surface2: #111128;
   --glass: rgba(255,255,255,0.04);
   --glass2: rgba(255,255,255,0.07);
@@ -1319,67 +1319,89 @@ footer a { color: var(--purple); text-decoration: none; }
 
 <script>
 // PROJECT DATA
-const projects = {
+const PROJECT_DATA = {
   p1: {
-    icon: '✅', title: 'Task Management System',
-    desc: 'A feature-rich, real-time collaborative project management platform designed for modern development teams. Features include Kanban-style drag-and-drop boards, sprint planning, task dependencies, and live team collaboration powered by WebSockets.',
+    icon: "✅",
+    title: "Task Management System",
+    type: "Full Stack",
+    desc: "An enterprise-grade, full-stack task management application built on ASP.NET Core MVC. Features a role-based access control system, a complete RESTful API, and a real-time analytics dashboard — giving teams visibility into project health at a glance.",
     features: [
-      'Drag-and-drop Kanban boards with Angular CDK DragDrop',
-      'Real-time collaboration via SignalR WebSocket connections',
-      'Role-based access control with JWT authentication',
-      'NgRx state management with entity adapters and effects',
-      'Push notifications and activity feed for team updates',
-      'Rich text editing for task descriptions and comments',
-      'File attachment support with Azure Blob Storage',
-      'Dark/Light mode with persistent user preferences'
+      "Role-based access control — Admin, Manager, and User tiers",
+      "Full RESTful API with CRUD operations for tasks, projects & users",
+      "Authentication with cookie-based sessions & server-side validation",
+      "Analytics dashboard — task completion rates, workload distribution",
+      "Entity Framework Core with SQL Server for data persistence",
+      "Bootstrap-powered responsive UI with clean admin aesthetics",
     ],
-    stack: ['Angular 17', 'NgRx', 'RxJS', 'ASP.NET Core 8', 'SignalR', 'PostgreSQL', 'Docker', 'Azure']
+    stack: [
+      { label: "C#", cls: "tag-csharp" },
+      { label: "ASP.NET Core MVC", cls: "tag-dotnet" },
+      { label: "Entity Framework", cls: "tag-ef" },
+      { label: "SQL Server", cls: "tag-sql" },
+      { label: "Bootstrap", cls: "tag-bs" },
+    ],
   },
   p2: {
-    icon: '🎓', title: 'E-Learning Platform',
-    desc: 'A comprehensive learning management system enabling educators to create, sell, and deliver online courses at scale. Built with a microservices architecture handling thousands of concurrent learners, with adaptive video streaming and gamified progress tracking.',
+    icon: "🎓",
+    title: "E-Learning Platform",
+    type: "Frontend (Angular)",
+    desc: "A scalable, production-quality learning management system built entirely in Angular. The application uses NgRx for predictable state management, RxJS for reactive data streams, and integrates Firebase and Cloudinary for backend services and rich media handling.",
     features: [
-      'Adaptive video streaming with HLS protocol integration',
-      'Interactive quiz engine with multiple question formats',
-      'Stripe payment integration with subscription management',
-      'Progress tracking and certificate generation (PDF)',
-      'Course content builder with rich media support',
-      'Student analytics dashboard with completion rates',
-      'Discussion forums with real-time reply notifications',
-      'Mobile-responsive Angular PWA with offline support'
+      "NgRx store with effects & entity adapters for state management",
+      "Server-Side Rendering (SSR) for improved SEO & first-load performance",
+      "Responsive UI built with Angular Material & Tailwind CSS",
+      "Firebase for real-time database, authentication & hosting",
+      "Cloudinary integration for media upload, transformation & delivery",
+      "RxJS reactive pipelines for live content & enrollment updates",
     ],
-    stack: ['Angular', 'RxJS', 'Spring Boot', 'Java 17', 'Stripe API', 'MySQL', 'Kafka', 'AWS S3']
+    stack: [
+      { label: "Angular", cls: "tag-angular" },
+      { label: "NgRx", cls: "tag-ngrx" },
+      { label: "RxJS", cls: "tag-rxjs" },
+      { label: "Angular Material", cls: "tag-material" },
+      { label: "Firebase", cls: "tag-firebase" },
+      { label: "Cloudinary", cls: "tag-cloudinary" },
+      { label: "Tailwind CSS", cls: "tag-tailwind" },
+      { label: "Bootstrap", cls: "tag-bs" },
+    ],
   },
   p3: {
-    icon: '🏪', title: 'Inventory Dashboard',
-    desc: 'An enterprise inventory management system with real-time stock monitoring, predictive reorder alerts, and comprehensive supplier relationship management. Designed to handle complex multi-warehouse operations with advanced analytics.',
+    icon: "🛒",
+    title: "Shop Smart (E-Commerce)",
+    type: "Full Stack",
+    desc: "A full-stack e-commerce application with dynamic product listings, a persistent shopping cart, and a Node.js REST API backend. Built with Angular on the frontend and a clean Bootstrap UI, demonstrating end-to-end full-stack proficiency.",
     features: [
-      'Real-time inventory tracking with barcode scanner integration',
-      'Predictive low-stock alerts with configurable thresholds',
-      'Multi-warehouse support with transfer management',
-      'Supplier portal with automated PO generation',
-      'Advanced Chart.js analytics with custom date ranges',
-      'Redis caching for high-performance dashboard queries',
-      'CSV/Excel import-export with validation pipeline',
-      'Responsive design optimized for warehouse tablet use'
+      "Dynamic product catalogue with search & category filtering",
+      "Shopping cart with session-persistent state",
+      "Fully responsive Bootstrap layout for all screen sizes",
+      "Node.js & Express REST API backend",
+      "RESTful product and order management endpoints",
+      "Clean, conversion-optimised UI design",
     ],
-    stack: ['Angular', 'NgRx', 'ASP.NET Core', 'C#', 'Chart.js', 'Redis', 'SQL Server', 'Docker']
+    stack: [
+      { label: "Angular", cls: "tag-angular" },
+      { label: "Node.js", cls: "tag-node" },
+      { label: "Bootstrap", cls: "tag-bs" },
+    ],
   },
   p4: {
-    icon: '🔐', title: 'Auth Microservice Hub',
-    desc: 'A centralized authentication and authorization platform supporting multiple enterprise authentication patterns. Designed as a standalone microservice that any application can integrate via standard OAuth2 flows and SDKs.',
+    icon: "📈",
+    title: "HM Invest Calculator",
+    type: "Frontend (Angular 18)",
+    desc: "A sleek, interactive investment calculator built with Angular 18. Helps users project portfolio growth by calculating compound interest, annualised returns, and investment timelines — all with real-time reactive updates and a clean, professional UI.",
     features: [
-      'Full OAuth2 / OpenID Connect server implementation',
-      'Multi-factor authentication (TOTP, SMS, Email)',
-      'Single Sign-On (SSO) across multiple applications',
-      'Role and permission management with fine-grained RBAC',
-      'Audit logging for all authentication events',
-      'JWT with configurable expiry and refresh token rotation',
-      'Docker containerized with Kubernetes deployment configs',
-      'Admin dashboard for user and application management'
+      "Real-time compound interest & return calculations with reactive forms",
+      "Built with Angular 18 standalone components & signals",
+      "Multiple investment scenarios with side-by-side comparison",
+      "Visual growth charts for intuitive result presentation",
+      "Responsive layout optimised for desktop and mobile",
+      "Clean, minimal UI focused on clarity and usability",
     ],
-    stack: ['Spring Boot', 'Spring Security', 'OAuth2', 'JWT', 'PostgreSQL', 'Docker', 'Kubernetes', 'Redis']
-  }
+    stack: [
+      { label: "Angular 18", cls: "tag-angular" },
+      { label: "TypeScript", cls: "tag-ts" },
+    ],
+  },
 };
 
 function openModal(id) {
