@@ -75,7 +75,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 72px; /* height of fixed nav */
+  scroll-padding-top: 72px;
 }
 
 body {
@@ -86,7 +86,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   transition: background 0.4s var(--ease-out), color 0.4s var(--ease-out);
-  cursor: none;  /* custom cursor active */
+  cursor: none;
 }
 
 img { max-width: 100%; display: block; }
@@ -139,7 +139,6 @@ body::before {
   will-change: left, top;
 }
 
-/* Cursor enlarges on interactive elements */
 body:has(a:hover) #cursor,
 body:has(button:hover) #cursor { width: 20px; height: 20px; background: var(--purple); }
 body:has(a:hover) #cursor-ring,
@@ -323,7 +322,6 @@ nav.scrolled { box-shadow: 0 4px 40px rgba(0,0,0,0.35); }
   z-index: 1;
 }
 
-/* Ambient glow orbs */
 .hero-bg { position: absolute; inset: 0; pointer-events: none; }
 
 .orb {
@@ -360,14 +358,12 @@ nav.scrolled { box-shadow: 0 4px 40px rgba(0,0,0,0.35); }
   66%      { transform: translate(-12px,18px) scale(0.95); opacity: 0.8; }
 }
 
-/* Particle canvas fills hero */
 #particles-canvas {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   pointer-events: none;
 }
 
-/* Hero content */
 .hero-content {
   position: relative; z-index: 2;
   max-width: 700px;
@@ -443,7 +439,6 @@ nav.scrolled { box-shadow: 0 4px 40px rgba(0,0,0,0.35); }
 
 .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
 
-/* Scroll indicator */
 .hero-scroll {
   position: absolute;
   bottom: 44px; left: 50%;
@@ -687,10 +682,8 @@ section {
 .skill-tag:hover { border-color: var(--purple); color: var(--purple); }
 
 /* ══════════════════════════════════════
-   PROJECTS  (PREMIUM REDESIGN)
+   PROJECTS
 ══════════════════════════════════════ */
-
-/* Filter buttons */
 .project-filters {
   display: flex; gap: 12px;
   margin-bottom: 48px;
@@ -719,14 +712,12 @@ section {
   box-shadow: 0 0 20px rgba(168,85,247,0.4);
 }
 
-/* 2-column grid */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2,1fr);
   gap: 28px;
 }
 
-/* ── PROJECT CARD — core ── */
 .project-card {
   background: var(--glass);
   border: 1px solid var(--border);
@@ -737,8 +728,6 @@ section {
     transform       0.4s var(--ease-out),
     box-shadow      0.4s var(--ease-out),
     border-color    0.3s;
-
-  /* Staggered entrance via CSS custom property set inline */
   --reveal-delay: 0s;
 }
 
@@ -750,7 +739,6 @@ section {
   border-color: rgba(168,85,247,0.4);
 }
 
-/* Animated glowing top border */
 .card-glow-border {
   position: absolute;
   top: 0; left: -100%; right: 0;
@@ -762,7 +750,6 @@ section {
 
 .project-card:hover .card-glow-border { left: 0; }
 
-/* Ambient inner glow on hover */
 .project-card::after {
   content: '';
   position: absolute; inset: 0;
@@ -774,7 +761,6 @@ section {
 
 .project-card:hover::after { opacity: 1; }
 
-/* ── VISUAL HEADER ── */
 .project-visual {
   height: 190px;
   position: relative; overflow: hidden;
@@ -792,13 +778,11 @@ section {
   transform: scale(1.05);
 }
 
-/* Gradient variants per project */
 .pv1 { background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 50%, #22d3ee 100%); }
 .pv2 { background: linear-gradient(135deg, #be185d 0%, #7c3aed 60%, #a855f7 100%); }
 .pv3 { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 60%, #f472b6 100%); }
 .pv4 { background: linear-gradient(135deg, #059669 0%, #22d3ee 60%, #3b82f6 100%); }
 
-/* Icon */
 .project-icon-wrap {
   position: relative; z-index: 1;
   transition: transform 0.4s var(--ease-spring);
@@ -814,7 +798,6 @@ section {
   display: block;
 }
 
-/* Type pill badge */
 .project-type-pill {
   position: absolute;
   top: 14px; right: 14px;
@@ -838,7 +821,6 @@ section {
   color: var(--cyan);
 }
 
-/* ── CARD BODY ── */
 .project-body { padding: 28px 28px 24px; }
 
 .project-num {
@@ -863,7 +845,6 @@ section {
   margin-bottom: 20px;
 }
 
-/* ── TECH STACK TAGS ── */
 .project-stack {
   display: flex; flex-wrap: wrap; gap: 8px;
   margin-bottom: 20px;
@@ -897,7 +878,6 @@ section {
 .tag-nuxt      { background: rgba(52,211,153,0.12); border-color: rgba(52,211,153,0.35); color: #6ee7b7; }
 .tag-vue       { background: rgba(52,211,153,0.1);  border-color: rgba(52,211,153,0.3);  color: #a7f3d0; }
 
-/* ── FEATURE LIST ── */
 .project-features {
   margin-bottom: 22px;
   display: flex; flex-direction: column; gap: 7px;
@@ -917,7 +897,6 @@ section {
   margin-top: 1px;
 }
 
-/* ── CARD LINKS ROW ── */
 .project-links {
   display: flex; align-items: center; gap: 16px;
   padding-top: 16px;
@@ -943,10 +922,7 @@ section {
 
 .details-btn:hover { color: var(--pink) !important; }
 
-/* Hidden state for filter */
-.project-card.hidden {
-  display: none;
-}
+.project-card.hidden { display: none; }
 
 /* ══════════════════════════════════════
    EXPERIENCE / TIMELINE
@@ -957,7 +933,6 @@ section {
   margin: 0 auto;
 }
 
-/* Vertical thread */
 .timeline::before {
   content: '';
   position: absolute;
@@ -1101,7 +1076,6 @@ section {
 .social-name   { font-weight: 600; }
 .social-handle { font-size: 12px; color: var(--text3); margin-top: 2px; }
 
-/* Contact Form */
 .contact-form {
   background: var(--glass);
   border: 1px solid var(--border);
@@ -1142,78 +1116,82 @@ section {
   box-shadow: 0 0 0 3px rgba(168,85,247,0.12);
 }
 
-.form-control::placeholder { color: var(--text3); }
-.form-control.invalid { border-color: #ef4444; }
+.form-control.invalid {
+  border-color: #f87171;
+  box-shadow: 0 0 0 3px rgba(248,113,113,0.1);
+}
 
-textarea.form-control { resize: vertical; min-height: 148px; }
+textarea.form-control {
+  resize: vertical;
+  min-height: 130px;
+}
 
 .form-error {
   display: none;
-  font-size: 12px; color: #f87171;
+  font-size: 12px;
+  color: #f87171;
   margin-top: 6px;
   font-family: 'JetBrains Mono', monospace;
 }
 
 .form-group.has-error .form-error { display: block; }
 
-.form-submit {
-  width: 100%;
-  padding: 16px;
-  font-size: 15px;
-  justify-content: center;
-}
+.form-submit { width: 100%; justify-content: center; }
 
 .form-success {
-  display: none; align-items: center; gap: 10px;
-  padding: 14px 18px;
+  display: none;
+  align-items: center; gap: 10px;
+  padding: 16px 20px;
   background: rgba(52,211,153,0.1);
   border: 1px solid rgba(52,211,153,0.3);
   border-radius: 10px;
   color: var(--green);
   font-size: 14px;
-  margin-top: 16px;
 }
 
 /* ══════════════════════════════════════
-   PROJECT MODAL
+   MODAL
 ══════════════════════════════════════ */
 .modal-overlay {
   position: fixed; inset: 0;
-  background: rgba(6,6,18,0.88);
-  z-index: 2000;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+  z-index: 5000;
   display: flex; align-items: center; justify-content: center;
-  padding: 20px;
-  opacity: 0; pointer-events: none;
-  backdrop-filter: blur(12px);
-  transition: opacity 0.3s;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-out);
 }
 
-.modal-overlay.active { opacity: 1; pointer-events: all; }
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
 
 .modal {
-  background: var(--surface);
+  background: var(--surface2);
   border: 1px solid var(--border2);
   border-radius: 28px;
-  padding: 48px;
-  max-width: 640px;
-  width: 100%;
-  max-height: 88vh;
-  overflow-y: auto;
+  padding: 44px;
+  max-width: 600px; width: 100%;
+  max-height: 85vh; overflow-y: auto;
   position: relative;
-  transform: scale(0.9) translateY(24px);
-  transition: transform 0.38s var(--ease-out);
-  scrollbar-width: thin;
-  scrollbar-color: rgba(168,85,247,0.4) transparent;
+  transform: scale(0.94) translateY(16px);
+  transition: transform 0.35s var(--ease-spring);
 }
 
-.modal-overlay.active .modal { transform: scale(1) translateY(0); }
+.modal-overlay.active .modal {
+  transform: scale(1) translateY(0);
+}
 
 .modal-close {
-  position: absolute; top: 20px; right: 20px;
-  width: 38px; height: 38px;
-  border-radius: 50%;
+  position: absolute;
+  top: 20px; right: 20px;
+  width: 36px; height: 36px;
   background: var(--glass2);
   border: 1px solid var(--border);
+  border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   color: var(--text2);
   transition: all 0.2s;
