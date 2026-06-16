@@ -1,787 +1,674 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Hazem Mostafa – Full Stack Engineer specializing in Angular, NgRx, ASP.NET Core & Spring Boot. Based in Linz, Austria.">
-<meta property="og:title" content="Hazem Mostafa | Full Stack Engineer">
-<meta property="og:description" content="Award-winning portfolio of a Full Stack Engineer in Linz, Austria.">
-<title>Hazem Mostafa | Full Stack Engineer</title>
-<link rel="stylesheet" href="style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hazem Mostafa – Full Stack Engineer specializing in Angular, ASP.NET Core & modern web architecture. Based in Linz, Austria." />
+  <meta property="og:title" content="Hazem Mostafa | Full Stack Engineer" />
+  <meta property="og:description" content="Premium developer portfolio — Angular, ASP.NET Core, Spring Boot." />
+  <meta property="og:type" content="website" />
+  <title>Hazem Mostafa | Full Stack Engineer</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- GSAP for premium animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="grid-lines"></div>
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
+  <!-- ══════════════════════════════════════
+       CUSTOM CURSOR
+  ══════════════════════════════════════ -->
+  <div id="cursor" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
 
-<!-- LOADING SCREEN -->
-<div id="loader">
-  <div class="loader-logo">HM</div>
-  <div class="loader-bar-wrap"><div class="loader-bar" id="loader-bar"></div></div>
-  <div class="loader-text" id="loader-text">Initializing...</div>
-</div>
+  <!-- ══════════════════════════════════════
+       LOADING SCREEN
+  ══════════════════════════════════════ -->
+  <div id="loader" role="status" aria-label="Loading portfolio">
+    <div class="loader-logo">HM</div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar" id="loader-bar"></div>
+    </div>
+    <div class="loader-text" id="loader-text">Initializing...</div>
+  </div>
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modal-overlay">
-  <div class="modal" id="modal-content">
-    <button class="modal-close" id="modal-close">✕</button>
-    <div id="modal-body"></div>
-  </div>
-</div>
-
-<!-- NAV -->
-<nav id="navbar">
-  <a href="#hero" class="nav-logo">HM.</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <div class="nav-right">
-    <button id="theme-toggle" aria-label="Toggle theme"></button>
-    <a href="#contact" class="btn btn-primary" style="padding:10px 20px;font-size:13px;">Hire Me</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section id="hero">
-  <canvas id="particles-canvas"></canvas>
-  <div class="hero-bg">
-    <div class="orb orb1"></div>
-    <div class="orb orb2"></div>
-    <div class="orb orb3"></div>
-  </div>
-  <div class="hero-content">
-    <div class="hero-badge">
-      <span class="hero-badge-dot"></span>
-      Available for opportunities · Linz, Austria
-    </div>
-    <h1 class="hero-title">
-      <span class="hero-name">Hazem Mostafa</span>
-      <span class="hero-role-line">Full Stack Engineer</span>
-    </h1>
-    <div class="hero-rotating-roles">
-      <span id="rotating-text">Angular Specialist</span><span class="role-cursor"></span>
-    </div>
-    <p class="hero-desc">
-      Building scalable, elegant digital experiences with modern frontend architecture and robust backend systems. Crafting software that performs beautifully — from pixel to API.
-    </p>
-    <div class="hero-ctas">
-      <a href="#projects" class="btn btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
-        View Projects
-      </a>
-      <a href="#contact" class="btn btn-outline">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Get In Touch
-      </a>
-    </div>
-  </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    Scroll
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-grid">
-    <div class="about-avatar-wrap reveal">
-      <div class="about-avatar">
-        <div class="avatar-ring"></div>
-        <span class="avatar-initials">HM</span>
-      </div>
-      <div class="avatar-dots">
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-    </div>
-    <div class="about-text">
-      <div class="section-label reveal">About Me</div>
-      <h2 class="section-title reveal">Crafting Digital<br><span class="highlight">Excellence</span></h2>
-      <p class="about-p reveal">A passionate Full Stack Engineer based in Linz, Austria, specializing in building high-performance, scalable web applications. With deep expertise in Angular and modern reactive patterns, I turn complex requirements into elegant, maintainable solutions.</p>
-      <p class="about-p reveal">I thrive at the intersection of thoughtful architecture and beautiful user experience — combining the power of NgRx state management and RxJS reactive streams on the frontend with robust ASP.NET Core and Spring Boot backends.</p>
-      <div class="about-stats reveal">
-        <div class="stat-card">
-          <div class="stat-num">2+</div>
-          <div class="stat-label">Years Experience</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">5+</div>
-          <div class="stat-label">Projects Shipped</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">∞</div>
-          <div class="stat-label">Lines of Code</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-label reveal">Expertise</div>
-  <h2 class="section-title reveal">Technical <span class="highlight">Arsenal</span></h2>
-  <div class="skills-grid">
-    <div class="skill-category reveal">
-      <div class="skill-cat-icon fe">🎨</div>
-      <div class="skill-cat-title">Frontend</div>
-      <div class="skill-item">
-        <div class="skill-item-header"><span>Angular 17+ (Standalone)</span><span>95%</span></div>
-        <div class="skill-bar"><div class="skill-fill fe" data-width="95"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item-header"><span>Vue.js</span><span>85%</span></div>
-        <div class="skill-bar"><div class="skill-fill fe" data-width="85"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item-header"><span>Nuxt 3</span><span>75%</span></div>
-        <div class="skill-bar"><div class="skill-fill fe" data-width="75"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item-header"><span>NgRx / RxJS</span><span>90%</span></div>
-        <div class="skill-bar"><div class="skill-fill fe" data-width="90"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item-header"><span>TypeScript</span><span>92%</span></div>
-        <div class="skill-bar"><div class="skill-fill fe" data-width="92"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item-header"><span>HTML5 / CSS3 / SCSS</span><span>88%</span></div>
-        <div class="skill-bar"><div class="skill-fill fe" data-width="88"></div></div>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">Angular CDK</span>
-        <span class="skill-tag">Signals</span>
-        <span class="skill-tag">PrimeNG</span>
-        <span class="skill-tag">Angular Material</span>
-      </div>
-    </div>
-    <div class="skill-category reveal" style="transition-delay:0.1s">
-      <div class="skill-cat-icon be">⚙️</div>
-      <div class="skill-cat-title">Backend</div>
-      <div class="skill-item">
-        <div class="skill-item-header"><span>ASP.NET Core</span><span>88%</span></div>
-        <div class="skill-bar"><div class="skill-fill be" data-width="88"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item-header"><span>Spring Boot</span><span>80%</span></div>
-        <div class="skill-bar"><div class="skill-fill be" data-width="80"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item-header"><span>REST APIs / GraphQL</span><span>85%</span></div>
-        <div class="skill-bar"><div class="skill-fill be" data-width="85"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item-header"><span>SQL / PostgreSQL</span><span>82%</span></div>
-        <div class="skill-bar"><div class="skill-fill be" data-width="82"></div></div>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">Entity Framework</span>
-        <span class="skill-tag">C#</span>
-        <span class="skill-tag">Java</span>
-        <span class="skill-tag">JWT / Auth</span>
-      </div>
-    </div>
-    <div class="skill-category reveal" style="transition-delay:0.2s">
-      <div class="skill-cat-icon tools">🛠️</div>
-      <div class="skill-cat-title">Tools & Ops</div>
-      <div class="skill-item">
-        <div class="skill-item-header"><span>Git / GitHub</span><span>92%</span></div>
-        <div class="skill-bar"><div class="skill-fill tools" data-width="92"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item-header"><span>Docker / Kubernetes</span><span>72%</span></div>
-        <div class="skill-bar"><div class="skill-fill tools" data-width="72"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item-header"><span>CI/CD Pipelines</span><span>78%</span></div>
-        <div class="skill-bar"><div class="skill-fill tools" data-width="78"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-item-header"><span>Azure / AWS</span><span>70%</span></div>
-        <div class="skill-bar"><div class="skill-fill tools" data-width="70"></div></div>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">JIRA</span>
-        <span class="skill-tag">Figma</span>
-        <span class="skill-tag">Postman</span>
-        <span class="skill-tag">Nx Monorepo</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-label reveal">Portfolio</div>
-  <h2 class="section-title reveal">Featured <span class="highlight">Projects</span></h2>
-  <div class="projects-grid">
-    <!-- Project 1 -->
-    <div class="project-card reveal" onclick="openModal('p1')">
-      <div class="project-visual">
-        <div class="project-visual-bg pv1"></div>
-        <div class="project-icon-big">✅</div>
-      </div>
-      <div class="project-body">
-        <div class="project-num">01 / PROJECT</div>
-        <div class="project-title">Task Management System</div>
-        <div class="project-desc">A real-time collaborative task management platform with drag-and-drop boards, role-based access control, and live notification streams.</div>
-        <div class="project-stack">
-          <span class="stack-tag">Angular 17</span>
-          <span class="stack-tag">NgRx</span>
-          <span class="stack-tag">ASP.NET Core</span>
-          <span class="stack-tag">SignalR</span>
-          <span class="stack-tag">PostgreSQL</span>
-        </div>
-        <div class="project-links">
-          <a class="project-link" onclick="event.stopPropagation()" href="https://github.com/haziim99/TaskManagementSystem">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-            GitHub
-          </a>
-          <a class="project-link" onclick="event.stopPropagation()" href="https://task-management-system-liart-three.vercel.app/">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Live Demo
-          </a>
-          <span class="project-link" style="margin-left:auto;color:var(--purple);font-size:12px;">View details →</span>
-        </div>
-      </div>
-    </div>
-    <!-- Project 2 -->
-    <div class="project-card reveal" style="transition-delay:0.1s" onclick="openModal('p2')">
-      <div class="project-visual">
-        <div class="project-visual-bg pv2"></div>
-        <div class="project-icon-big">🎓</div>
-      </div>
-      <div class="project-body">
-        <div class="project-num">02 / PROJECT</div>
-        <div class="project-title">E-Learning Platform</div>
-        <div class="project-desc">A comprehensive learning management system with video streaming, progress tracking, quiz engine, and payment integration for online educators.</div>
-        <div class="project-stack">
-          <span class="stack-tag">Angular</span>
-          <span class="stack-tag">RxJS</span>
-          <span class="stack-tag">Spring Boot</span>
-          <span class="stack-tag">Java</span>
-          <span class="stack-tag">Stripe</span>
-        </div>
-        <div class="project-links">
-          <a class="project-link" onclick="event.stopPropagation()" href="https://github.com/haziim99/sdk-akademie">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-            GitHub
-          </a>
-          <a class="project-link" onclick="event.stopPropagation()" href="https://sdk-akademie.vercel.app/">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Live Demo
-          </a>
-          <span class="project-link" style="margin-left:auto;color:var(--purple);font-size:12px;">View details →</span>
-        </div>
-      </div>
-    </div>
-    <!-- Project 3 -->
-<div class="project-card reveal" style="transition-delay:0.15s" onclick="openModal('p3')">
-  <div class="project-visual">
-    <div class="project-visual-bg pv3"></div>
-    <div class="project-icon-big">🛒</div>
-  </div>
-  <div class="project-body">
-    <div class="project-num">03 / PROJECT</div>
-    <div class="project-title">Shop Smart (E-Commerce)</div>
-    <div class="project-desc">
-      A full-stack e-commerce application with dynamic product listings, a persistent shopping cart, and a Node.js REST API backend.
-    </div>
-    <div class="project-stack">
-      <span class="stack-tag">Angular</span>
-      <span class="stack-tag">Node.js</span>
-      <span class="stack-tag">Bootstrap</span>
-    </div>
-    <div class="project-links">
-      <a class="project-link" onclick="event.stopPropagation()" href="https://github.com/haziim99/ShopSmart">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+  <!-- ══════════════════════════════════════
+       PROJECT DETAIL MODAL
+  ══════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="Project details">
+    <div class="modal" id="modal-content">
+      <button class="modal-close" id="modal-close" aria-label="Close modal">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
         </svg>
-        GitHub
-      </a>
-      <a class="project-link" onclick="event.stopPropagation()" href="https://shop-smart-kappa.vercel.app/">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Live Demo
-          </a>
-      <span class="project-link" style="margin-left:auto;color:var(--purple);font-size:12px;">
-        View details →
-      </span>
-    </div>
-  </div>
-</div>
-
-<!-- Project 4 -->
-<div class="project-card reveal" style="transition-delay:0.2s" onclick="openModal('p4')">
-  <div class="project-visual">
-    <div class="project-visual-bg pv4"></div>
-    <div class="project-icon-big">📈</div>
-  </div>
-  <div class="project-body">
-    <div class="project-num">04 / PROJECT</div>
-    <div class="project-title">HM Invest Calculator</div>
-    <div class="project-desc">
-      A sleek, interactive investment calculator that helps users project portfolio growth using real-time calculations and a clean UI.
-    </div>
-    <div class="project-stack">
-      <span class="stack-tag">Angular 18</span>
-      <span class="stack-tag">TypeScript</span>
-    </div>
-    <div class="project-links">
-      <a class="project-link" onclick="event.stopPropagation()" href="https://github.com/haziim99/hm-investcalculator">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
-        </svg>
-        GitHub
-      </a>
-      <a class="project-link" onclick="event.stopPropagation()" href="https://hm-investcalculator.vercel.app/">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Live Demo
-          </a>
-      <span class="project-link" style="margin-left:auto;color:var(--purple);font-size:12px;">
-        View details →
-      </span>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-label reveal">Career</div>
-  <h2 class="section-title reveal">Work <span class="highlight">Timeline</span></h2>
-  <div class="timeline">
-    <div class="timeline-item" id="tl1">
-      <div class="timeline-dot">💼</div>
-      <div class="timeline-content">
-        <div class="featured-badge">⭐ Featured</div>
-        <div class="timeline-period">JULY 2025 – AUG 2025</div>
-        <div class="timeline-role">Software Engineering Intern</div>
-        <div class="timeline-company">SKIDATA GmbH · Linz, Austria</div>
-        <div class="timeline-desc">Developed and maintained enterprise-grade Angular applications for access control and parking management systems used globally. Implemented NgRx state management patterns, integrated real-time data streams via RxJS, and collaborated with cross-functional teams to ship production features on tight deadlines.</div>
-        <div class="timeline-tags">
-          <span class="timeline-tag">Angular</span>
-          <span class="timeline-tag">NgRx</span>
-          <span class="timeline-tag">RxJS</span>
-          <span class="timeline-tag">ASP.NET Core</span>
-          <span class="timeline-tag">Agile / Scrum</span>
-        </div>
-      </div>
-    </div>
-    <div class="timeline-item" id="tl2">
-      <div class="timeline-dot">🎓</div>
-      <div class="timeline-content">
-        <div class="timeline-period">2024 - Present</div>
-        <div class="timeline-role">BSc Computer Science</div>
-        <div class="timeline-company">Johannes Kepler University · Linz, Austria</div>
-        <div class="timeline-desc">Studied computer science with focus on software engineering, distributed systems, and human-computer interaction. Built multiple full-stack projects using modern web technologies and participated in university hackathons.</div>
-        <div class="timeline-tags">
-          <span class="timeline-tag">Algorithms</span>
-          <span class="timeline-tag">Distributed Systems</span>
-          <span class="timeline-tag">Software Architecture</span>
-        </div>
-      </div>
-    </div>
-    <div class="timeline-item" id="tl3">
-      <div class="timeline-dot">🚀</div>
-      <div class="timeline-content">
-        <div class="timeline-period">2022</div>
-        <div class="timeline-role">Freelance Full Stack Developer</div>
-        <div class="timeline-company">Self-Employed · Remote</div>
-        <div class="timeline-desc">Delivered custom web applications for small businesses and startups. Specialized in Angular frontends with Node.js and ASP.NET Core backends, building everything from e-commerce platforms to admin dashboards.</div>
-        <div class="timeline-tags">
-          <span class="timeline-tag">Angular</span>
-          <span class="timeline-tag">Node.js</span>
-          <span class="timeline-tag">PostgreSQL</span>
-          <span class="timeline-tag">Freelance</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-grid">
-    <div class="contact-info">
-      <div class="section-label reveal">Contact</div>
-      <h2 class="section-title reveal" style="margin-bottom:24px">Let's Build<br><span class="highlight">Something Great</span></h2>
-      <p class="reveal">Open to full-time roles, freelance projects, and exciting collaborations. Based in Linz but open to remote opportunities worldwide.</p>
-      <div class="contact-socials reveal">
-        <a href="https://github.com/haziim99" target="_blank" class="social-link">
-          <div class="social-icon si-github">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-          </div>
-          <div>
-            <div class="social-name">GitHub</div>
-            <div class="social-handle">@hazem-mostafa</div>
-          </div>
-        </a>
-        <a href="https://www.linkedin.com/in/hmhazem99/" target="_blank" class="social-link">
-          <div class="social-icon si-linkedin">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-          </div>
-          <div>
-            <div class="social-name">LinkedIn</div>
-            <div class="social-handle">Hazem Mostafa</div>
-          </div>
-        </a>
-        <a href="mailto:mustafahazem018@gmail.com" class="social-link">
-          <div class="social-icon si-email">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-          <div>
-            <div class="social-name">Email</div>
-            <div class="social-handle">mustafahazem018@gmail.com</div>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="contact-form reveal">
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">// Name</label>
-          <input type="text" class="form-control" id="cf-name" placeholder="Your name">
-        </div>
-        <div class="form-group">
-          <label class="form-label">// Email</label>
-          <input type="email" class="form-control" id="cf-email" placeholder="your@email.com">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">// Subject</label>
-        <input type="text" class="form-control" id="cf-subject" placeholder="Project collaboration, Job opportunity...">
-      </div>
-      <div class="form-group">
-        <label class="form-label">// Message</label>
-        <textarea class="form-control" id="cf-msg" placeholder="Tell me about your project or opportunity..."></textarea>
-      </div>
-      <button class="btn btn-primary form-submit" onclick="submitForm()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-        Send Message
       </button>
-      <div class="form-success" id="form-success">
-        <span>✓</span> Message sent! I'll get back to you within 24 hours.
-      </div>
+      <div id="modal-body"></div>
     </div>
   </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <span>© 2026 <a href="#">Hazem Mostafa</a> · Linz, Austria</span>
-  <span>Designed & Built with ❤️ and lots of ☕</span>
-  <span>Angular · ASP.NET · Spring Boot</span>
-</footer>
+  <!-- ══════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════ -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <a href="#hero" class="nav-logo" aria-label="Hazem Mostafa - Home">HM.</a>
 
-<script>
-// PROJECT DATA
-const PROJECT_DATA = {
-  p1: {
-    icon: "✅",
-    title: "Task Management System",
-    type: "Full Stack",
-    desc: "An enterprise-grade, full-stack task management application built on ASP.NET Core MVC. Features a role-based access control system, a complete RESTful API, and a real-time analytics dashboard — giving teams visibility into project health at a glance.",
-    features: [
-      "Role-based access control — Admin, Manager, and User tiers",
-      "Full RESTful API with CRUD operations for tasks, projects & users",
-      "Authentication with cookie-based sessions & server-side validation",
-      "Analytics dashboard — task completion rates, workload distribution",
-      "Entity Framework Core with SQL Server for data persistence",
-      "Bootstrap-powered responsive UI with clean admin aesthetics",
-    ],
-    stack: [
-      { label: "C#", cls: "tag-csharp" },
-      { label: "ASP.NET Core MVC", cls: "tag-dotnet" },
-      { label: "Entity Framework", cls: "tag-ef" },
-      { label: "SQL Server", cls: "tag-sql" },
-      { label: "Bootstrap", cls: "tag-bs" },
-    ],
-  },
-  p2: {
-    icon: "🎓",
-    title: "E-Learning Platform",
-    type: "Frontend (Angular)",
-    desc: "A scalable, production-quality learning management system built entirely in Angular. The application uses NgRx for predictable state management, RxJS for reactive data streams, and integrates Firebase and Cloudinary for backend services and rich media handling.",
-    features: [
-      "NgRx store with effects & entity adapters for state management",
-      "Server-Side Rendering (SSR) for improved SEO & first-load performance",
-      "Responsive UI built with Angular Material & Tailwind CSS",
-      "Firebase for real-time database, authentication & hosting",
-      "Cloudinary integration for media upload, transformation & delivery",
-      "RxJS reactive pipelines for live content & enrollment updates",
-    ],
-    stack: [
-      { label: "Angular", cls: "tag-angular" },
-      { label: "NgRx", cls: "tag-ngrx" },
-      { label: "RxJS", cls: "tag-rxjs" },
-      { label: "Angular Material", cls: "tag-material" },
-      { label: "Firebase", cls: "tag-firebase" },
-      { label: "Cloudinary", cls: "tag-cloudinary" },
-      { label: "Tailwind CSS", cls: "tag-tailwind" },
-      { label: "Bootstrap", cls: "tag-bs" },
-    ],
-  },
-  p3: {
-    icon: "🛒",
-    title: "Shop Smart (E-Commerce)",
-    type: "Full Stack",
-    desc: "A full-stack e-commerce application with dynamic product listings, a persistent shopping cart, and a Node.js REST API backend. Built with Angular on the frontend and a clean Bootstrap UI, demonstrating end-to-end full-stack proficiency.",
-    features: [
-      "Dynamic product catalogue with search & category filtering",
-      "Shopping cart with session-persistent state",
-      "Fully responsive Bootstrap layout for all screen sizes",
-      "Node.js & Express REST API backend",
-      "RESTful product and order management endpoints",
-      "Clean, conversion-optimised UI design",
-    ],
-    stack: [
-      { label: "Angular", cls: "tag-angular" },
-      { label: "Node.js", cls: "tag-node" },
-      { label: "Bootstrap", cls: "tag-bs" },
-    ],
-  },
-  p4: {
-    icon: "📈",
-    title: "HM Invest Calculator",
-    type: "Frontend (Angular 18)",
-    desc: "A sleek, interactive investment calculator built with Angular 18. Helps users project portfolio growth by calculating compound interest, annualised returns, and investment timelines — all with real-time reactive updates and a clean, professional UI.",
-    features: [
-      "Real-time compound interest & return calculations with reactive forms",
-      "Built with Angular 18 standalone components & signals",
-      "Multiple investment scenarios with side-by-side comparison",
-      "Visual growth charts for intuitive result presentation",
-      "Responsive layout optimised for desktop and mobile",
-      "Clean, minimal UI focused on clarity and usability",
-    ],
-    stack: [
-      { label: "Angular 18", cls: "tag-angular" },
-      { label: "TypeScript", cls: "tag-ts" },
-    ],
-  },
-};
+    <ul class="nav-links" role="list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
 
-function openModal(id) {
-const p = PROJECT_DATA[id];
-  document.getElementById('modal-body').innerHTML = `
-    <div class="modal-icon">${p.icon}</div>
-    <h2 class="modal-title">${p.title}</h2>
-    <p class="modal-desc">${p.desc}</p>
-    <div class="modal-features">
-      <h4>// Key Features</h4>
-      ${p.features.map(f => `<div class="modal-feature">${f}</div>`).join('')}
+    <div class="nav-right">
+      <!-- Dark/Light mode toggle -->
+      <button id="theme-toggle" aria-label="Toggle colour theme" title="Toggle theme"></button>
+      <a href="#contact" class="btn btn-primary btn-sm">Hire Me</a>
     </div>
-    <div class="project-stack" style="margin-bottom:0">${p.stack.map(s => `<span class="stack-tag">${s}</span>`).join('')}</div>
-  `;
-  document.getElementById('modal-overlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-document.getElementById('modal-close').onclick = closeModal;
-document.getElementById('modal-overlay').onclick = function(e) {
-  if (e.target === this) closeModal();
-};
-function closeModal() {
-  document.getElementById('modal-overlay').classList.remove('active');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+  </nav>
 
-// THEME TOGGLE
-let theme = localStorage.getItem('theme') || 'dark';
-document.documentElement.setAttribute('data-theme', theme);
-document.getElementById('theme-toggle').onclick = () => {
-  theme = theme === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme);
-};
+  <!-- ══════════════════════════════════════
+       HERO SECTION
+  ══════════════════════════════════════ -->
+  <section id="hero" aria-label="Introduction">
+    <!-- Animated particle network -->
+    <canvas id="particles-canvas" aria-hidden="true"></canvas>
 
-// CURSOR
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-let mx=0, my=0, rx=0, ry=0;
-document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
-function animCursor() {
-  cursor.style.left = mx+'px'; cursor.style.top = my+'px';
-  rx += (mx-rx)*0.12; ry += (my-ry)*0.12;
-  ring.style.left = rx+'px'; ring.style.top = ry+'px';
-  requestAnimationFrame(animCursor);
-}
-animCursor();
+    <!-- Ambient glow orbs -->
+    <div class="hero-bg" aria-hidden="true">
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="orb orb3"></div>
+    </div>
 
-// LOADER
-window.addEventListener('load', () => {
-  const bar = document.getElementById('loader-bar');
-  const txt = document.getElementById('loader-text');
-  const msgs = ['Initializing...', 'Loading modules...', 'Compiling styles...', 'Almost ready...'];
-  let i = 0;
-  bar.style.width = '30%';
-  const iv = setInterval(() => {
-    i++;
-    if(i < msgs.length) { txt.textContent = msgs[i]; bar.style.width = (30+i*23)+'%'; }
-    else { clearInterval(iv); }
-  }, 280);
-  setTimeout(() => {
-    document.querySelector('.loader-logo').style.opacity = '1';
-    document.querySelector('.loader-logo').style.transition = 'opacity 0.5s';
-  }, 100);
-  setTimeout(() => {
-    bar.style.width = '100%';
-    setTimeout(() => {
-      const loader = document.getElementById('loader');
-      loader.style.opacity = '0';
-      loader.style.transition = 'opacity 0.5s';
-      setTimeout(() => { loader.style.display = 'none'; initAnimations(); }, 500);
-    }, 400);
-  }, 1400);
-});
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot" aria-hidden="true"></span>
+        Available for opportunities · Linz, Austria
+      </div>
 
-// PARTICLES
-function initParticles() {
-  const canvas = document.getElementById('particles-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H, particles = [];
-  function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
-  resize(); window.addEventListener('resize', resize);
-  const cols = ['rgba(168,85,247,', 'rgba(34,211,238,', 'rgba(244,114,182,', 'rgba(59,130,246,'];
-  for(let i=0;i<70;i++) {
-    particles.push({
-      x: Math.random()*W, y: Math.random()*H,
-      vx: (Math.random()-.5)*0.4, vy: (Math.random()-.5)*0.4,
-      r: Math.random()*1.5+0.5,
-      c: cols[Math.floor(Math.random()*cols.length)],
-      a: Math.random()*0.4+0.1
-    });
-  }
-  function draw() {
-    ctx.clearRect(0,0,W,H);
-    particles.forEach(p => {
-      p.x += p.vx; p.y += p.vy;
-      if(p.x<0)p.x=W; if(p.x>W)p.x=0;
-      if(p.y<0)p.y=H; if(p.y>H)p.y=0;
-      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle = p.c+p.a+')'; ctx.fill();
-    });
-    particles.forEach((p,i) => {
-      for(let j=i+1;j<particles.length;j++) {
-        const d = Math.hypot(p.x-particles[j].x, p.y-particles[j].y);
-        if(d<120) {
-          ctx.beginPath();
-          ctx.strokeStyle = 'rgba(168,85,247,'+(0.06*(1-d/120))+')';
-          ctx.lineWidth = 0.5;
-          ctx.moveTo(p.x,p.y); ctx.lineTo(particles[j].x,particles[j].y);
-          ctx.stroke();
-        }
-      }
-    });
-    requestAnimationFrame(draw);
-  }
-  draw();
-}
-initParticles();
+      <h1 class="hero-title">
+        <span class="hero-name">Hazem Mostafa</span>
+        <span class="hero-role-line">Full Stack Engineer</span>
+      </h1>
 
-// ROTATING ROLES
-const roles = ['Angular Specialist', 'NgRx Architect', 'Full Stack Engineer', 'ASP.NET Developer', 'Spring Boot Dev', 'UI/UX Enthusiast'];
-let ri=0, ci=0, deleting=false;
-const rotEl = document.getElementById('rotating-text');
-function typeRole() {
-  const target = roles[ri];
-  if(!deleting) {
-    rotEl.textContent = target.slice(0,ci+1); ci++;
-    if(ci===target.length) { deleting=true; setTimeout(typeRole,2200); return; }
-  } else {
-    rotEl.textContent = target.slice(0,ci-1); ci--;
-    if(ci===0) { deleting=false; ri=(ri+1)%roles.length; }
-  }
-  setTimeout(typeRole, deleting?60:90);
-}
-typeRole();
+      <!-- Typewriter rotating roles -->
+      <div class="hero-rotating-roles" aria-live="polite">
+        <span id="rotating-text">Angular Specialist</span>
+        <span class="role-cursor" aria-hidden="true"></span>
+      </div>
 
-// SCROLL REVEAL
-function initAnimations() {
-  const reveals = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => obs.observe(el));
+      <p class="hero-desc">
+        Building scalable, elegant digital experiences with modern frontend architecture
+        and robust backend systems. Crafting software that performs beautifully — from pixel to API.
+      </p>
 
-  // Skill bars
-  const barObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if(e.isIntersecting) {
-        e.target.querySelectorAll('.skill-fill').forEach(b => {
-          b.style.width = b.dataset.width + '%';
-        });
-        barObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('.skill-category').forEach(el => barObs.observe(el));
+      <div class="hero-ctas">
+        <a href="#projects" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+          View Projects
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get In Touch
+        </a>
+      </div>
+    </div>
 
-  // Timeline
-  const tlObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if(e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateX(0)';
-        e.target.style.transition = 'opacity 0.7s ease, transform 0.7s cubic-bezier(.4,0,.2,1)';
-        tlObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.2 });
-  ['tl1','tl2','tl3'].forEach((id, i) => {
-    const el = document.getElementById(id);
-    if(el) { el.style.transitionDelay = (i*0.15)+'s'; tlObs.observe(el); }
-  });
+    <!-- Scroll indicator -->
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
 
-  // GSAP hero entrance
-  if(typeof gsap !== 'undefined') {
-    gsap.from('.hero-badge', { duration: 0.8, y: 30, opacity: 0, delay: 0.1, ease: 'power3.out' });
-    gsap.from('.hero-title', { duration: 1, y: 50, opacity: 0, delay: 0.25, ease: 'power3.out' });
-    gsap.from('.hero-rotating-roles', { duration: 0.8, y: 30, opacity: 0, delay: 0.45, ease: 'power3.out' });
-    gsap.from('.hero-desc', { duration: 0.8, y: 30, opacity: 0, delay: 0.6, ease: 'power3.out' });
-    gsap.from('.hero-ctas', { duration: 0.8, y: 30, opacity: 0, delay: 0.75, ease: 'power3.out' });
-    gsap.from('.hero-scroll', { duration: 0.8, y: 20, opacity: 0, delay: 1.0, ease: 'power2.out' });
-    if(typeof ScrollTrigger !== 'undefined') {
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.to('.hero-content', {
-        scrollTrigger: { trigger:'#hero', start:'top top', end:'bottom top', scrub:true },
-        y: -80, opacity: 0.3
-      });
-    }
-  }
-}
+  <!-- ══════════════════════════════════════
+       ABOUT SECTION
+  ══════════════════════════════════════ -->
+  <section id="about" aria-label="About me">
+    <div class="about-grid">
 
-// FORM
-function submitForm() {
-  const n=document.getElementById('cf-name').value;
-  const e=document.getElementById('cf-email').value;
-  const m=document.getElementById('cf-msg').value;
-  if(!n||!e||!m) { alert('Please fill all required fields.'); return; }
-  const btn = document.querySelector('.form-submit');
-  btn.textContent = 'Sending...'; btn.disabled = true;
-  setTimeout(() => {
-    btn.style.display='none';
-    const s=document.getElementById('form-success');
-    s.style.display='flex';
-    ['cf-name','cf-email','cf-subject','cf-msg'].forEach(id=>document.getElementById(id).value='');
-  }, 1200);
-}
+      <!-- Avatar / visual identity -->
+      <div class="about-avatar-wrap reveal">
+        <div class="about-avatar">
+          <div class="avatar-ring" aria-hidden="true"></div>
+          <span class="avatar-initials" aria-label="Hazem Mostafa initials">HM</span>
+        </div>
+        <!-- Decorative dot grid -->
+        <div class="avatar-dots" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
 
-// NAV scroll shadow
-window.addEventListener('scroll', () => {
-  document.getElementById('navbar').style.boxShadow =
-    window.scrollY > 20 ? '0 2px 40px rgba(0,0,0,0.3)' : 'none';
-});
-</script>
+      <!-- Bio text -->
+      <div class="about-text">
+        <div class="section-label reveal">About Me</div>
+        <h2 class="section-title reveal">
+          Crafting Digital<br><span class="highlight">Excellence</span>
+        </h2>
+        <p class="about-p reveal">
+          A passionate Full Stack Engineer based in Linz, Austria, specialising in high-performance,
+          scalable web applications. With deep expertise in Angular and modern reactive patterns,
+          I turn complex requirements into elegant, maintainable solutions.
+        </p>
+        <p class="about-p reveal">
+          I thrive at the intersection of thoughtful architecture and beautiful user experience —
+          combining NgRx state management and RxJS reactive streams on the frontend with robust
+          ASP.NET Core and Spring Boot backends.
+        </p>
+
+        <!-- Key stats -->
+        <div class="about-stats reveal">
+          <div class="stat-card">
+            <div class="stat-num">3+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">10+</div>
+            <div class="stat-label">Projects Shipped</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">∞</div>
+            <div class="stat-label">Lines of Code</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SKILLS SECTION
+  ══════════════════════════════════════ -->
+  <section id="skills" aria-label="Technical skills">
+    <div class="section-label reveal">Expertise</div>
+    <h2 class="section-title reveal">Technical <span class="highlight">Arsenal</span></h2>
+
+    <div class="skills-grid">
+
+      <!-- Frontend skills -->
+      <div class="skill-category reveal">
+        <div class="skill-cat-icon fe" aria-hidden="true">🎨</div>
+        <div class="skill-cat-title">Frontend</div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>Angular 17+ (Standalone)</span><span>95%</span></div>
+          <div class="skill-bar"><div class="skill-fill fe" data-width="95" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>NgRx / RxJS</span><span>90%</span></div>
+          <div class="skill-bar"><div class="skill-fill fe" data-width="90" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>TypeScript</span><span>92%</span></div>
+          <div class="skill-bar"><div class="skill-fill fe" data-width="92" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>HTML5 / SCSS / Tailwind</span><span>90%</span></div>
+          <div class="skill-bar"><div class="skill-fill fe" data-width="90" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Angular CDK</span>
+          <span class="skill-tag">Signals</span>
+          <span class="skill-tag">Angular Material</span>
+          <span class="skill-tag">Firebase</span>
+        </div>
+      </div>
+
+      <!-- Backend skills -->
+      <div class="skill-category reveal" style="--reveal-delay: 0.1s">
+        <div class="skill-cat-icon be" aria-hidden="true">⚙️</div>
+        <div class="skill-cat-title">Backend</div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>ASP.NET Core / C#</span><span>88%</span></div>
+          <div class="skill-bar"><div class="skill-fill be" data-width="88" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>Spring Boot / Java</span><span>80%</span></div>
+          <div class="skill-bar"><div class="skill-fill be" data-width="80" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>Node.js</span><span>78%</span></div>
+          <div class="skill-bar"><div class="skill-fill be" data-width="78" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>SQL Server / PostgreSQL</span><span>82%</span></div>
+          <div class="skill-bar"><div class="skill-fill be" data-width="82" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Entity Framework</span>
+          <span class="skill-tag">RESTful APIs</span>
+          <span class="skill-tag">JWT / Auth</span>
+          <span class="skill-tag">Nuxt 3</span>
+        </div>
+      </div>
+
+      <!-- Tools & DevOps -->
+      <div class="skill-category reveal" style="--reveal-delay: 0.2s">
+        <div class="skill-cat-icon tools" aria-hidden="true">🛠️</div>
+        <div class="skill-cat-title">Tools & DevOps</div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>Git / GitHub</span><span>92%</span></div>
+          <div class="skill-bar"><div class="skill-fill tools" data-width="92" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>Docker</span><span>72%</span></div>
+          <div class="skill-bar"><div class="skill-fill tools" data-width="72" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>CI / CD Pipelines</span><span>75%</span></div>
+          <div class="skill-bar"><div class="skill-fill tools" data-width="75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>Cloudinary / Firebase</span><span>80%</span></div>
+          <div class="skill-bar"><div class="skill-fill tools" data-width="80" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Postman</span>
+          <span class="skill-tag">Jira</span>
+          <span class="skill-tag">Bootstrap</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       PROJECTS SECTION
+  ══════════════════════════════════════ -->
+  <section id="projects" aria-label="Featured projects">
+    <div class="section-label reveal">Portfolio</div>
+    <h2 class="section-title reveal">Featured <span class="highlight">Projects</span></h2>
+
+    <!-- Filter tabs -->
+    <div class="project-filters reveal" role="group" aria-label="Filter projects by type">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+      <button class="filter-btn" data-filter="frontend">Frontend</button>
+    </div>
+
+    <div class="projects-grid" id="projects-grid">
+
+      <!-- ── PROJECT 1: Task Management System ── -->
+      <article class="project-card reveal" data-category="fullstack" data-project="p1">
+        <!-- Glowing top border on hover -->
+        <div class="card-glow-border" aria-hidden="true"></div>
+
+        <!-- Visual header -->
+        <div class="project-visual">
+          <div class="project-visual-bg pv1" aria-hidden="true"></div>
+          <!-- Animated icon -->
+          <div class="project-icon-wrap">
+            <span class="project-icon-big" aria-hidden="true">✅</span>
+          </div>
+          <!-- Floating tech pill -->
+          <div class="project-type-pill fullstack-pill">Full Stack</div>
+        </div>
+
+        <!-- Card content -->
+        <div class="project-body">
+          <div class="project-num">01 / PROJECT</div>
+          <h3 class="project-title">Task Management System</h3>
+          <p class="project-desc">
+            Enterprise-grade task manager with role-based access control, RESTful API layer,
+            and a real-time analytics dashboard built on ASP.NET Core MVC.
+          </p>
+
+          <!-- Accurate tech stack -->
+          <div class="project-stack" aria-label="Technologies used">
+            <span class="stack-tag tag-csharp">C#</span>
+            <span class="stack-tag tag-dotnet">ASP.NET Core MVC</span>
+            <span class="stack-tag tag-ef">Entity Framework</span>
+            <span class="stack-tag tag-sql">SQL Server</span>
+            <span class="stack-tag tag-bs">Bootstrap</span>
+          </div>
+
+          <!-- Key features -->
+          <ul class="project-features" aria-label="Key features">
+            <li>Role-based access — Admin, Manager, User</li>
+            <li>RESTful API with full CRUD operations</li>
+            <li>Authentication & server-side validation</li>
+            <li>Analytics dashboard with live metrics</li>
+          </ul>
+
+          <!-- Actions -->
+          <div class="project-links">
+            <a class="project-link" href="#" aria-label="View GitHub repository">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+              GitHub
+            </a>
+            <button class="project-link details-btn" aria-label="View full project details">
+              View Details
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── PROJECT 2: E-Learning Platform ── -->
+      <article class="project-card reveal" data-category="frontend" data-project="p2" style="--reveal-delay:0.1s">
+        <div class="card-glow-border" aria-hidden="true"></div>
+        <div class="project-visual">
+          <div class="project-visual-bg pv2" aria-hidden="true"></div>
+          <div class="project-icon-wrap">
+            <span class="project-icon-big" aria-hidden="true">🎓</span>
+          </div>
+          <div class="project-type-pill frontend-pill">Frontend</div>
+        </div>
+        <div class="project-body">
+          <div class="project-num">02 / PROJECT</div>
+          <h3 class="project-title">E-Learning Platform</h3>
+          <p class="project-desc">
+            Scalable learning management system with NgRx state management, server-side rendering,
+            rich media handling via Cloudinary, and a fully responsive Angular UI.
+          </p>
+          <div class="project-stack" aria-label="Technologies used">
+            <span class="stack-tag tag-angular">Angular</span>
+            <span class="stack-tag tag-ngrx">NgRx</span>
+            <span class="stack-tag tag-rxjs">RxJS</span>
+            <span class="stack-tag tag-material">Angular Material</span>
+            <span class="stack-tag tag-firebase">Firebase</span>
+            <span class="stack-tag tag-cloudinary">Cloudinary</span>
+            <span class="stack-tag tag-tailwind">Tailwind</span>
+          </div>
+          <ul class="project-features">
+            <li>NgRx store with effects &amp; entity adapters</li>
+            <li>SSR support for performance &amp; SEO</li>
+            <li>Responsive UI with Angular Material</li>
+            <li>Media upload &amp; optimisation via Cloudinary</li>
+          </ul>
+          <div class="project-links">
+            <a class="project-link" href="#" aria-label="View GitHub repository">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+              GitHub
+            </a>
+            <button class="project-link details-btn" aria-label="View full project details">
+              View Details
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── PROJECT 3: Shop Smart ── -->
+      <article class="project-card reveal" data-category="fullstack" data-project="p3" style="--reveal-delay:0.15s">
+        <div class="card-glow-border" aria-hidden="true"></div>
+        <div class="project-visual">
+          <div class="project-visual-bg pv3" aria-hidden="true"></div>
+          <div class="project-icon-wrap">
+            <span class="project-icon-big" aria-hidden="true">🛒</span>
+          </div>
+          <div class="project-type-pill fullstack-pill">Full Stack</div>
+        </div>
+        <div class="project-body">
+          <div class="project-num">03 / PROJECT</div>
+          <h3 class="project-title">Shop Smart</h3>
+          <p class="project-desc">
+            Full-stack e-commerce application with dynamic product listings, cart system,
+            and a clean responsive design — built with Angular and Node.js.
+          </p>
+          <div class="project-stack" aria-label="Technologies used">
+            <span class="stack-tag tag-angular">Angular</span>
+            <span class="stack-tag tag-node">Node.js</span>
+            <span class="stack-tag tag-bs">Bootstrap</span>
+          </div>
+          <ul class="project-features">
+            <li>Dynamic product catalogue &amp; search</li>
+            <li>Shopping cart with persistent state</li>
+            <li>Responsive layout for all screen sizes</li>
+            <li>Node.js REST API backend</li>
+          </ul>
+          <div class="project-links">
+            <a class="project-link" href="#" aria-label="View GitHub repository">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+              GitHub
+            </a>
+            <button class="project-link details-btn" aria-label="View full project details">
+              View Details
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── PROJECT 4: FahrTest Pro ── -->
+      <article class="project-card reveal" data-category="frontend" data-project="p4" style="--reveal-delay:0.2s">
+        <div class="card-glow-border" aria-hidden="true"></div>
+        <div class="project-visual">
+          <div class="project-visual-bg pv4" aria-hidden="true"></div>
+          <div class="project-icon-wrap">
+            <span class="project-icon-big" aria-hidden="true">📝</span>
+          </div>
+          <div class="project-type-pill frontend-pill">Frontend</div>
+        </div>
+        <div class="project-body">
+          <div class="project-num">04 / PROJECT</div>
+          <h3 class="project-title">FahrTest Pro</h3>
+          <p class="project-desc">
+            Dynamic, trilingual (German/English/Arabic) exam platform developed with Angular and Java (Spring Boot).
+            Reactivity through state-of-the-art state management (Signals) and a smooth user experience with GSAP animations.
+          </p>
+
+          <div class="project-stack" aria-label="Technologies used">
+            <span class="stack-tag tag-angular">Angular</span>
+            <span class="stack-tag tag-java">Java / Spring Boot</span>
+            <span class="stack-tag tag-gsap">GSAP</span>
+            <span class="stack-tag tag-firebase">Firebase</span>
+          </div>
+
+          <ul class="project-features">
+            <li>Trilingual simulation engine supporting seamless DE/EN/AR transitions</li>
+            <li>State-of-the-art Angular Signals for high-performance reactive state management</li>
+            <li>Robust Java Spring Boot backend with secure user & database management</li>
+            <li>Advanced administrative dashboard featuring real-time Firestore synchronization</li>
+          </ul>
+
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/haziim99/FahrTest" aria-label="View GitHub repository">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+              </svg>
+              GitHub
+            </a>
+            <a class="project-link" href="https://haziim99.github.io/FahrTest/" aria-label="View live demo">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+              Live Demo
+            </a>
+            <button class="project-link details-btn" aria-label="View full project details">
+              View Details
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /projects-grid -->
+  </section>
+
+  <!-- ══════════════════════════════════════
+       EXPERIENCE SECTION
+  ══════════════════════════════════════ -->
+  <section id="experience" aria-label="Work experience">
+    <div class="section-label reveal">Career</div>
+    <h2 class="section-title reveal">Work <span class="highlight">Timeline</span></h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item" id="tl1">
+        <div class="timeline-dot" aria-hidden="true">💼</div>
+        <div class="timeline-content">
+          <span class="featured-badge">⭐ Featured</span>
+          <div class="timeline-period">2023 – Present</div>
+          <div class="timeline-role">Software Engineering Intern</div>
+          <div class="timeline-company">SKIDATA GmbH · Linz, Austria</div>
+          <p class="timeline-desc">
+            Developed and maintained enterprise Angular applications for access control and parking
+            management systems used globally. Implemented NgRx state management patterns,
+            integrated real-time data streams via RxJS, and shipped production features in
+            Agile sprints.
+          </p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Angular</span>
+            <span class="timeline-tag">NgRx</span>
+            <span class="timeline-tag">RxJS</span>
+            <span class="timeline-tag">ASP.NET Core</span>
+            <span class="timeline-tag">Agile / Scrum</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item" id="tl2">
+        <div class="timeline-dot" aria-hidden="true">🎓</div>
+        <div class="timeline-content">
+          <div class="timeline-period">2021 – 2024</div>
+          <div class="timeline-role">BSc Computer Science</div>
+          <div class="timeline-company">Johannes Kepler University · Linz, Austria</div>
+          <p class="timeline-desc">
+            Studied computer science with focus on software engineering, distributed systems,
+            and human-computer interaction. Built multiple full-stack projects and participated
+            in university hackathons.
+          </p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Algorithms</span>
+            <span class="timeline-tag">Distributed Systems</span>
+            <span class="timeline-tag">Software Architecture</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item" id="tl3">
+        <div class="timeline-dot" aria-hidden="true">🚀</div>
+        <div class="timeline-content">
+          <div class="timeline-period">2022</div>
+          <div class="timeline-role">Freelance Full Stack Developer</div>
+          <div class="timeline-company">Self-Employed · Remote</div>
+          <p class="timeline-desc">
+            Delivered custom web applications for small businesses and startups.
+            Specialised in Angular frontends with Node.js and ASP.NET Core backends,
+            building e-commerce platforms and admin dashboards.
+          </p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Angular</span>
+            <span class="timeline-tag">Node.js</span>
+            <span class="timeline-tag">ASP.NET Core</span>
+            <span class="timeline-tag">Freelance</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CONTACT SECTION
+  ══════════════════════════════════════ -->
+  <section id="contact" aria-label="Contact me">
+    <div class="contact-grid">
+
+      <!-- Info column -->
+      <div class="contact-info">
+        <div class="section-label reveal">Contact</div>
+        <h2 class="section-title reveal" style="margin-bottom:24px">
+          Let's Build<br><span class="highlight">Something Great</span>
+        </h2>
+        <p class="reveal">
+          Open to full-time roles, freelance projects, and exciting collaborations.
+          Based in Linz but open to remote opportunities worldwide.
+        </p>
+
+        <div class="contact-socials reveal">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="social-link">
+            <div class="social-icon si-github" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            </div>
+            <div>
+              <div class="social-name">GitHub</div>
+              <div class="social-handle">@hazem-mostafa</div>
+            </div>
+          </a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-link">
+            <div class="social-icon si-linkedin" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            <div>
+              <div class="social-name">LinkedIn</div>
+              <div class="social-handle">Hazem Mostafa</div>
+            </div>
+          </a>
+          <a href="mailto:hazem@example.com" class="social-link">
+            <div class="social-icon si-email" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="social-name">Email</div>
+              <div class="social-handle">hazem@example.com</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact form -->
+      <form class="contact-form reveal" id="contact-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="cf-name">// Name</label>
+            <input type="text" class="form-control" id="cf-name" name="name" placeholder="Your name" required autocomplete="name" />
+            <span class="form-error" id="err-name">Name is required</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-email">// Email</label>
+            <input type="email" class="form-control" id="cf-email" name="email" placeholder="your@email.com" required autocomplete="email" />
+            <span class="form-error" id="err-email">Valid email required</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cf-subject">// Subject</label>
+          <input type="text" class="form-control" id="cf-subject" name="subject" placeholder="Project collaboration, Job opportunity..." />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cf-msg">// Message</label>
+          <textarea class="form-control" id="cf-msg" name="message" placeholder="Tell me about your project or opportunity..." required></textarea>
+          <span class="form-error" id="err-msg">Message is required</span>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit" id="form-submit-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Send Message
+        </button>
+        <div class="form-success" id="form-success" role="status" aria-live="polite">
+          <span aria-hidden="true">✓</span> Message sent! I'll get back to you within 24 hours.
+        </div>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer>
+    <span>© <span id="footer-year"></span> <a href="#">Hazem Mostafa</a> · Linz, Austria</span>
+    <span class="footer-center">Designed &amp; built with ❤️</span>
+    <span>Angular · ASP.NET · Spring Boot</span>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
 </body>
 </html>
